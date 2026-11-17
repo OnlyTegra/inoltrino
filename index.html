@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="it" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inoltrino™ (by Antonino) — Il Primo Servizio Professionale di Inoltro Totale e Indiscriminato</title>
+  <meta name="description" content="Di nome Antonino, di fatto Inoltrino: inoltriamo ogni messaggio della tua chat ai diretti interessati e a chi non c'entra assolutamente nulla." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <div class="ambient-bg"></div>
+  <div class="grid-overlay"></div>
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navbar -->
+  <nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-glass py-3">
+    <div class="container">
+      <a class="brand-logo" href="#">
+        <span class="brand-icon-wrap">
+          <i class="bi bi-reply-all-fill"></i>
+        </span>
+        <span>Inoltrino<span class="text-info">.it</span></span>
+      </a>
+
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Menu">
+        <i class="bi bi-list fs-2 text-white"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="#chi-e">Chi è Antonino</a></li>
+          <li class="nav-item"><a class="nav-link" href="#come-funziona">Metodo Inoltrino</a></li>
+          <li class="nav-item"><a class="nav-link" href="#simulatore">Simulatore Live</a></li>
+          <li class="nav-item"><a class="nav-link" href="#piani">Piani di Inoltro</a></li>
+          <li class="nav-item"><a class="nav-link" href="#recensioni">Vittime & Clienti</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a href="https://t.me/inoltrino_antonino_bot" target="_blank" rel="noopener noreferrer" class="btn-telegram py-2 px-3" data-bs-toggle="modal" data-bs-target="#telegramModal">
+            <i class="bi bi-telegram"></i>
+            <span>Contatta Inoltrino</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7" data-aos="fade-right" data-aos-duration="900">
+          <div class="badge-pill-glow mb-3">
+            <span class="live-dot"></span>
+            <span>Protocollo di Inoltro Compulsivo v4.2 Attivo</span>
+          </div>
+
+          <h1 class="display-4 fw-bolder lh-sm mb-3">
+            Tu scrivi in segreto.<br />
+            <span class="text-gradient">Inoltrino lo manda anche al tuo panettiere.</span>
+          </h1>
+
+          <p class="lead text-secondary mb-4 pe-lg-4">
+            Dietro la leggenda di <strong class="text-white">Inoltrino</strong> c'è un uomo in carne, ossa e screenshot: <strong class="text-info">Antonino</strong>. Il primo servizio in Italia che inoltra <em>qualunque</em> messaggio di una chat sia ai diretti interessati, sia a persone totalmente a caso che non c'entrano assolutamente nulla.
+          </p>
+
+          <!-- Official Motto Box -->
+          <div class="motto-banner mb-4">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-info text-dark fw-bold text-uppercase">Il Motto Ufficiale</span>
+              <small class="text-info fw-semibold" id="mottoSwitcherBtn" style="cursor:pointer;">
+                <i class="bi bi-arrow-repeat"></i> Cambia perla di saggezza
+              </small>
+            </div>
+            <p class="fs-5 fw-bold fst-italic mb-0 text-white" id="officialMottoText">
+              «Di nome Antonino, di fatto Inoltrino: il tuo segreto è già nel gruppo del cugino!»
+            </p>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+            <a href="https://t.me/inoltrino_antonino_bot" class="btn-telegram" data-bs-toggle="modal" data-bs-target="#telegramModal">
+              <i class="bi bi-telegram"></i>
+              <span>Scrivigli su Telegram (a tuo rischio)</span>
+            </a>
+            <a href="#simulatore" class="btn-glass">
+              <i class="bi bi-lightning-charge-fill text-warning me-1"></i>
+              <span>Prova l'Inoltratore Live</span>
+            </a>
+          </div>
+
+          <!-- Live Stats Row -->
+          <div class="row g-3 pt-2">
+            <div class="col-4">
+              <div class="p-3 rounded-4 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
+                <div class="h3 fw-bolder text-info mb-0" id="liveForwardedCount">1.482.910</div>
+                <small class="text-secondary">Messaggi Inoltrati</small>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="p-3 rounded-4 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
+                <div class="h3 fw-bolder text-warning mb-0">68.4%</div>
+                <small class="text-secondary">Gente che non c'entra</small>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="p-3 rounded-4 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
+                <div class="h3 fw-bolder text-success mb-0">0.02s</div>
+                <small class="text-secondary">Tempo di tradimento</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Phone Live Feed -->
+        <div class="col-lg-5" data-aos="fade-left" data-aos-duration="1000">
+          <div class="phone-mockup">
+            <div class="phone-header">
+              <div class="d-flex align-items-center gap-3">
+                <div class="avatar-antonino">A</div>
+                <div>
+                  <div class="fw-bold text-white d-flex align-items-center gap-1">
+                    Antonino "Inoltrino"
+                    <i class="bi bi-patch-check-fill text-info" title="Inoltratore Certificato ISO-9001"></i>
+                  </div>
+                  <small class="text-success fw-medium">
+                    <i class="bi bi-broadcast"></i> Sta inoltrando a 14 contatti...
+                  </small>
+                </div>
+              </div>
+              <span class="badge rounded-pill bg-danger bg-opacity-25 text-danger border border-danger border-opacity-50">
+                LIVE FEED
+              </span>
+            </div>
+
+            <div class="chat-stream" id="heroChatStream">
+              <div class="chat-bubble incoming">
+                <div class="small text-secondary fw-semibold mb-1">Marco (Amico fidato)</div>
+                «Anto ti prego, non dire a nessuno che stasera salto la cena di Giulia per giocare alla Play!»
+              </div>
+
+              <div class="chat-bubble forwarded">
+                <div class="forwarded-tag">
+                  <i class="bi bi-forward-fill"></i> Inoltrato da Antonino (Inoltrino)
+                </div>
+                «Anto ti prego, non dire a nessuno che stasera salto la cena di Giulia per giocare alla Play!»
+                <div class="mt-2">
+                  <span class="recipient-pill recipient-direct"><i class="bi bi-person-check"></i> Giulia (Diretta interessata)</span>
+                  <span class="recipient-pill recipient-random"><i class="bi bi-person-exclamation"></i> Zio Carmelo (Pensionato)</span>
+                  <span class="recipient-pill recipient-chaos"><i class="bi bi-people"></i> Calcetto del Giovedì (28 membri)</span>
+                </div>
+              </div>
+
+              <div class="chat-bubble incoming">
+                <div class="small text-secondary fw-semibold mb-1">Zio Carmelo</div>
+                «Ma chi è questo Marco? E perché non mangia da Giulia? Io ho comprato le spigole.»
+              </div>
+            </div>
+
+            <div class="mt-3 pt-2 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+              <small class="text-secondary">
+                <i class="bi bi-shield-slash text-danger me-1"></i> Crittografia: <strong>Totalmente Assente</strong>
+              </small>
+              <button class="btn btn-sm btn-outline-info rounded-pill px-3" id="triggerHeroForwardBtn">
+                <i class="bi bi-reply-all-fill me-1"></i> Simula Nuovo Inoltro
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LIVE TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-move">
+      <span class="ticker-item"><i class="bi bi-forward-fill text-info"></i> <strong>[18 sec fa]</strong> Antonino ha inoltrato un vocale di 4 minuti della tua ex al gruppo "Condominio Scala B"</span>
+      <span class="ticker-item"><i class="bi bi-forward-fill text-warning"></i> <strong>[42 sec fa]</strong> Preventivo del meccanico inoltrato a: Meccanico rivale, Ex professore di religione, Chat delle Mamme</span>
+      <span class="ticker-item"><i class="bi bi-forward-fill text-danger"></i> <strong>[1 min fa]</strong> Screenshot compromettente inoltrato al diretto interessato + al corriere Bartolini</span>
+      <span class="ticker-item"><i class="bi bi-forward-fill text-success"></i> <strong>[Motto del Giorno]</strong> "Se lo dici ad Antonino, parte subito l'Inoltrino!"</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="ticker-item"><i class="bi bi-forward-fill text-info"></i> <strong>[18 sec fa]</strong> Antonino ha inoltrato un vocale di 4 minuti della tua ex al gruppo "Condominio Scala B"</span>
+      <span class="ticker-item"><i class="bi bi-forward-fill text-warning"></i> <strong>[42 sec fa]</strong> Preventivo del meccanico inoltrato a: Meccanico rivale, Ex professore di religione, Chat delle Mamme</span>
+      <span class="ticker-item"><i class="bi bi-forward-fill text-danger"></i> <strong>[1 min fa]</strong> Screenshot compromettente inoltrato al diretto interessato + al corriere Bartolini</span>
+      <span class="ticker-item"><i class="bi bi-forward-fill text-success"></i> <strong>[Motto del Giorno]</strong> "Se lo dici ad Antonino, parte subito l'Inoltrino!"</span>
+    </div>
+  </div>
+
+  <!-- CHI È ANTONINO / INOLTRINO -->
+  <section id="chi-e" class="py-5 my-4">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-up">
+          <span class="badge-pill-glow mb-3">
+            <i class="bi bi-person-badge"></i> L'Uomo dietro il Mito
+          </span>
+          <h2 class="display-6 fw-bolder mb-3">
+            All'anagrafe è <span class="text-info">Antonino</span>.<br />
+            Sulle chat di tutta Italia è <span class="text-gradient">Inoltrino</span>.
+          </h2>
+          <p class="text-secondary mb-3">
+            Tutto è iniziato nel 2019, quando Antonino doveva girare la lista della spesa a sua madre e, per sbaglio, l'ha inoltrata contemporaneamente alla persona di cui sparlava, al suo datore di lavoro e a un tizio conosciuto in fila alle Poste nel 2014.
+          </p>
+          <p class="text-secondary mb-4">
+            Da quel giorno Antonino ha capito la sua vera vocazione: <strong>abbattere i confini della privacy con estrema trasparenza democratica</strong>. Perché tenere un messaggio chiuso in una singola chat quando possono leggerlo sia il diretto interessato sia un pensionato di Pordenone che non c'entra nulla?
+          </p>
+
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <div class="glass-card p-3">
+                <div class="d-flex align-items-center gap-3">
+                  <i class="bi bi-bullseye fs-2 text-info"></i>
+                  <div>
+                    <h6 class="fw-bold mb-1 text-white">50% Diretti Interessati</h6>
+                    <small class="text-secondary">Se parli male o bene di qualcuno, Antonino glielo gira in tempo reale.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="glass-card p-3">
+                <div class="d-flex align-items-center gap-3">
+                  <i class="bi bi-shuffle fs-2 text-warning"></i>
+                  <div>
+                    <h6 class="fw-bold mb-1 text-white">50% Estranei Totali</h6>
+                    <small class="text-secondary">Dal tuo dentista all'amministratore di condominio: nessuno è al sicuro.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6" data-aos="zoom-in">
+          <div class="glass-card p-4 p-md-5 position-relative">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <div>
+                <span class="badge bg-purple bg-opacity-25 text-info border border-info border-opacity-25 mb-2">IDENTIKIT UFFICIALE</span>
+                <h4 class="fw-extrabold mb-0">Scheda Tecnica di Antonino</h4>
+              </div>
+              <div class="avatar-antonino" style="width:60px;height:60px;font-size:1.6rem;">A</div>
+            </div>
+
+            <ul class="list-unstyled d-flex flex-column gap-3 mb-4">
+              <li class="d-flex justify-content-between border-bottom border-secondary border-opacity-25 pb-2">
+                <span class="text-secondary">Nome di Battesimo:</span>
+                <strong class="text-white">Antonino</strong>
+              </li>
+              <li class="d-flex justify-content-between border-bottom border-secondary border-opacity-25 pb-2">
+                <span class="text-secondary">Nome d'Arte Operativo:</span>
+                <strong class="text-info">Inoltrino™</strong>
+              </li>
+              <li class="d-flex justify-content-between border-bottom border-secondary border-opacity-25 pb-2">
+                <span class="text-secondary">Tasto più consumato:</span>
+                <strong class="text-warning">Inoltra a tutti (Seleziona 99+)</strong>
+              </li>
+              <li class="d-flex justify-content-between border-bottom border-secondary border-opacity-25 pb-2">
+                <span class="text-secondary">Capacità di tenere un segreto:</span>
+                <strong class="text-danger">-140% (Negativa certificata)</strong>
+              </li>
+              <li class="d-flex justify-content-between pb-1">
+                <span class="text-secondary">Filosofia di vita:</span>
+                <strong class="text-success fst-italic">«Condividere è moltiplicare il disagio»</strong>
+              </li>
+            </ul>
+
+            <div class="p-3 rounded-4 bg-info bg-opacity-10 border border-info border-opacity-25 text-center">
+              <p class="mb-0 fw-semibold text-white">
+                <i class="bi bi-quote text-info me-1"></i>
+                <em>Non chiedere ad Antonino di restare in silenzio: per lui "Inoltrato molte volte" è una medaglia al valore.</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COME FUNZIONA IL SERVIZIO -->
+  <section id="come-funziona" class="py-5">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-5" data-aos="fade-up">
+        <span class="badge-pill-glow mb-3">Architettura dell'Inoltro</span>
+        <h2 class="display-6 fw-bolder">Come lavora <span class="text-gradient">Inoltrino</span>?</h2>
+        <p class="text-secondary col-lg-7 mx-auto">
+          Un processo ingegnerizzato al millimetro da Antonino per garantire la massima diffusione a chi deve sapere e soprattutto a chi non dovrebbe saperlo mai.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="glass-card p-4 h-100">
+            <div class="icon-box">
+              <i class="bi bi-chat-dots-fill"></i>
+            </div>
+            <h5 class="fw-bold">1. Intercettazione</h5>
+            <p class="text-secondary small mb-0">
+              Aggiungi Antonino a una chat o gli mandi un messaggio privato preceduto da <em>"Mi raccomando resta tra noi"</em> (la sua parola chiave preferita per attivare il turbo).
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="glass-card p-4 h-100">
+            <div class="icon-box purple">
+              <i class="bi bi-person-Check-fill"></i>
+            </div>
+            <h5 class="fw-bold">2. Inoltro al Bersaglio</h5>
+            <p class="text-secondary small mb-0">
+              In meno di 0,3 secondi, Inoltrino individua il soggetto citato nel messaggio e glielo inoltra integralmente, inclusi audio, foto e note vocali imbarazzanti.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="glass-card p-4 h-100">
+            <div class="icon-box amber">
+              <i class="bi bi-dice-5-fill"></i>
+            </div>
+            <h5 class="fw-bold">3. Lancio Collaterale</h5>
+            <p class="text-secondary small mb-0">
+              L'algoritmo "Antonino-Random™" seleziona da 3 a 45 contatti totalmente estranei (es. il tuo fisioterapista, il gruppo del fantacalcio 2018, zia Concetta) e inoltra tutto anche a loro.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+          <div class="glass-card p-4 h-100">
+            <div class="icon-box emerald">
+              <i class="bi bi-fire"></i>
+            </div>
+            <h5 class="fw-bold">4. Effetto Domino</h5>
+            <p class="text-secondary small mb-0">
+              Gli estranei chiedono spiegazioni ai diretti interessati, creando una catena di equivoci meravigliosa mentre Antonino osserva soddisfatto con la doppia spunta blu.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMULATORE INTERATTIVO LIVE -->
+  <section id="simulatore" class="py-5 my-4">
+    <div class="container">
+      <div class="console-box p-4 p-lg-5" data-aos="fade-up">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-5">
+            <span class="badge bg-info text-dark fw-bold mb-2">TEST INTERATTIVO GRATUITO</span>
+            <h3 class="fw-bolder mb-3">Simulatore di Inoltro di Antonino</h3>
+            <p class="text-secondary mb-4">
+              Scrivi un qualsiasi messaggio (o scegli uno dei segreti preimpostati) e guarda a chi lo inoltrerà <strong>Inoltrino</strong> in tempo reale!
+            </p>
+
+            <div class="mb-3">
+              <label for="simInputMessage" class="form-label small text-info fw-semibold">Scrivi un messaggio "confidenziale" per Antonino:</label>
+              <textarea id="simInputMessage" class="form-control bg-dark text-white border-secondary" rows="3" placeholder="Es: Non dire al capo che sono al mare invece che in malattia...">Ho detto a Sara che ero bloccato nel traffico, ma in realtà stavo mangiando tre kebab con Lorenzo.</textarea>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              <button type="button" class="btn btn-sm btn-outline-secondary preset-msg-btn" data-msg="Non dire al capo che il certificato medico l'ho fatto mentre ero in spiaggia a Gallipoli!">🏖️ Finta malattia</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary preset-msg-btn" data-msg="Il regalo di compleanno di Marco l'ho riciclato dalla tombola di Natale di mia nonna.">🎁 Regalo riciclato</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary preset-msg-btn" data-msg="Ho rigato io la macchina nuova del vicino facendo retromarcia col furgone.">🚗 Auto rigata</button>
+            </div>
+
+            <button id="runSimulationBtn" class="btn-cyber w-100 justify-content-center py-3">
+              <i class="bi bi-reply-all-fill fs-5"></i>
+              <span>AFFIDA IL MESSAGGIO AD ANTONINO</span>
+            </button>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="p-3 p-md-4 rounded-4 bg-black bg-opacity-50 border border-secondary border-opacity-25">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="fw-bold text-white"><i class="bi bi-radar text-info me-2"></i>Radar Destinatari Colpiti da Inoltrino</span>
+                <span class="badge bg-secondary" id="simStatusBadge">In attesa di invio...</span>
+              </div>
+
+              <div class="row g-3" id="simTargetsGrid">
+                <!-- Populated dynamically by JS -->
+                <div class="col-md-6">
+                  <div class="target-node" id="node-direct-1">
+                    <div class="d-flex justify-content-between">
+                      <span class="badge bg-success bg-opacity-25 text-success">Diretto Interessato</span>
+                      <i class="bi bi-check2-all text-secondary"></i>
+                    </div>
+                    <h6 class="fw-bold mt-2 mb-1" id="targetName1">Sara (Fidanzata)</h6>
+                    <small class="text-secondary" id="targetReaction1">In attesa di ricevere lo screenshot...</small>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="target-node" id="node-direct-2">
+                    <div class="d-flex justify-content-between">
+                      <span class="badge bg-success bg-opacity-25 text-success">Diretto Interessato</span>
+                      <i class="bi bi-check2-all text-secondary"></i>
+                    </div>
+                    <h6 class="fw-bold mt-2 mb-1" id="targetName2">Lorenzo (Complice del Kebab)</h6>
+                    <small class="text-secondary" id="targetReaction2">In attesa di ricevere lo screenshot...</small>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="target-node" id="node-random-1">
+                    <div class="d-flex justify-content-between">
+                      <span class="badge bg-warning bg-opacity-25 text-warning">Non c'entra nulla #1</span>
+                      <i class="bi bi-check2-all text-secondary"></i>
+                    </div>
+                    <h6 class="fw-bold mt-2 mb-1" id="targetName3">Dott. Brambilla (Commercialista)</h6>
+                    <small class="text-secondary" id="targetReaction3">In attesa di ricevere lo screenshot...</small>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="target-node" id="node-random-2">
+                    <div class="d-flex justify-content-between">
+                      <span class="badge bg-danger bg-opacity-25 text-danger">Non c'entra assolutamente nulla #2</span>
+                      <i class="bi bi-check2-all text-secondary"></i>
+                    </div>
+                    <h6 class="fw-bold mt-2 mb-1" id="targetName4">Gruppo "Torneo Briscola Pro Loco"</h6>
+                    <small class="text-secondary" id="targetReaction4">In attesa di ricevere lo screenshot...</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3 p-3 rounded-3 bg-dark border border-info border-opacity-25" id="simLogOutput">
+                <small class="text-info font-monospace d-block">
+                  [SISTEMA ANTONINO PRONTO] Clicca su "Affida il messaggio ad Antonino" per scatenare l'inoltro multiplo.
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIANI E TARIFFE -->
+  <section id="piani" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="badge-pill-glow mb-3">Listino Ufficiale</span>
+        <h2 class="display-6 fw-bolder">Scegli il tuo livello di <span class="text-gradient">Caos Sociale</span></h2>
+        <p class="text-secondary col-lg-7 mx-auto">
+          Che tu voglia far arrivare una frecciatina all'ex o far sapere i fatti tuoi a metà provincia, Antonino ha il pacchetto su misura per te.
+        </p>
+      </div>
+
+      <div class="row g-4 align-items-stretch">
+        <!-- Piano 1 -->
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="glass-card p-4 p-xl-5 h-100 d-flex flex-column">
+            <span class="text-info fw-bold small text-uppercase">Livello Base</span>
+            <h3 class="fw-extrabold mt-1">Inoltrino Soft</h3>
+            <p class="text-secondary small">Ideale per piccoli malintesi familiari e figuracce contenute.</p>
+            <div class="my-3">
+              <span class="display-5 fw-bolder text-white">Gratis</span>
+              <span class="text-secondary">/ per sempre (Antonino lo fa per passione)</span>
+            </div>
+            <ul class="list-unstyled d-flex flex-column gap-2 mb-4 flex-grow-1">
+              <li><i class="bi bi-check-circle-fill text-info me-2"></i>Inoltro garantito al <strong>diretto interessato</strong></li>
+              <li><i class="bi bi-check-circle-fill text-info me-2"></i>Inoltro a <strong>3 sconosciuti</strong> della rubrica di Antonino</li>
+              <li><i class="bi bi-check-circle-fill text-info me-2"></i>Screenshot con batteria al 4% incluso</li>
+              <li class="text-secondary"><i class="bi bi-x-circle me-2"></i>Inoltro ai gruppi parrocchiali</li>
+            </ul>
+            <a href="https://t.me/inoltrino_antonino_bot" data-bs-toggle="modal" data-bs-target="#telegramModal" class="btn-glass w-100 text-center">
+              Attiva su Telegram
+            </a>
+          </div>
+        </div>
+
+        <!-- Piano 2 (Popolare) -->
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="glass-card pricing-popular p-4 p-xl-5 h-100 d-flex flex-column">
+            <span class="popular-ribbon">Più Scelto da Antonino</span>
+            <span class="text-warning fw-bold small text-uppercase">Livello Professionale</span>
+            <h3 class="fw-extrabold mt-1">Inoltrino Selvaggio</h3>
+            <p class="text-secondary small">Il classico metodo Antonino: nessuno capisce perché ha ricevuto il messaggio, ma tutti commentano.</p>
+            <div class="my-3">
+              <span class="display-5 fw-bolder text-white">1 Caffè</span>
+              <span class="text-secondary">/ ad Antonino al bar</span>
+            </div>
+            <ul class="list-unstyled d-flex flex-column gap-2 mb-4 flex-grow-1">
+              <li><i class="bi bi-check-circle-fill text-info me-2"></i>Inoltro istantaneo a <strong>tutti i citati nella chat</strong></li>
+              <li><i class="bi bi-check-circle-fill text-info me-2"></i>Inoltro a <strong>25 persone che non c'entrano nulla</strong></li>
+              <li><i class="bi bi-check-circle-fill text-info me-2"></i>Inoltro dei vocali a velocità 1x non tagliati</li>
+              <li><i class="bi bi-check-circle-fill text-info me-2"></i>Aggiunta del commento <em>"Guarda questo cosa scrive..."</em></li>
+            </ul>
+            <a href="https://t.me/inoltrino_antonino_bot" data-bs-toggle="modal" data-bs-target="#telegramModal" class="btn-telegram w-100 justify-content-center">
+              <i class="bi bi-telegram"></i> Scatena Antonino Ora
+            </a>
+          </div>
+        </div>
+
+        <!-- Piano 3 -->
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="glass-card p-4 p-xl-5 h-100 d-flex flex-column">
+            <span class="text-danger fw-bold small text-uppercase">Livello Apocalisse</span>
+            <h3 class="fw-extrabold mt-1">Protocollo "Antonino 360°"</h3>
+            <p class="text-secondary small">Quando vuoi che persino il sindaco e il tuo ex compagno delle elementari sappiano tutto.</p>
+            <div class="my-3">
+              <span class="display-5 fw-bolder text-gradient-gold">1 Teglia</span>
+              <span class="text-secondary">/ di lasagne la domenica</span>
+            </div>
+            <ul class="list-unstyled d-flex flex-column gap-2 mb-4 flex-grow-1">
+              <li><i class="bi bi-check-circle-fill text-info me-2"></i>Inoltro simultaneo su <strong>Telegram, WhatsApp e Liste Broadcast</strong></li>
+              <li><i class="bi bi-check-circle-fill text-info me-2"></i>Invio a <strong>100+ contatti totalmente estranei</strong></li>
+              <li><i class="bi bi-check-circle-fill text-info me-2"></i>Creazione automatica di un gruppo con vittima ed estranei</li>
+              <li><i class="bi bi-check-circle-fill text-info me-2"></i>Antonino abbandona il gruppo subito dopo l'inoltro</li>
+            </ul>
+            <a href="https://t.me/inoltrino_antonino_bot" data-bs-toggle="modal" data-bs-target="#telegramModal" class="btn-glass w-100 text-center">
+              Richiedi su Telegram
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENSIONI -->
+  <section id="recensioni" class="py-5 my-4">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="badge-pill-glow mb-3">Recensioni Certificate</span>
+        <h2 class="display-6 fw-bolder">Cosa dicono i <span class="text-gradient">Coinvolti (Volontari e Non)</span></h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="glass-card p-4 h-100">
+            <div class="text-warning mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p class="text-light fst-italic">
+              «Avevo scritto ad Antonino che il sugo di mia suocera era insipido. Dopo 11 secondi il messaggio era sul telefono di mia suocera, del mio idraulico e del mio assicuratore. Servizio impeccabile!»
+            </p>
+            <div class="d-flex align-items-center gap-3 mt-3 pt-3 border-top border-secondary border-opacity-25">
+              <div class="rounded-circle bg-info text-dark fw-bold d-flex align-items-center justify-content-center" style="width:42px;height:42px;">FD</div>
+              <div>
+                <h6 class="mb-0 fw-bold">Federico D.</h6>
+                <small class="text-secondary">Ex genero preferito</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="glass-card p-4 h-100">
+            <div class="text-warning mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p class="text-light fst-italic">
+              «Io faccio il gommista a Bergamo e non conosco né Antonino né questa Valentina di Salerno, ma grazie a Inoltrino ora so tutta la storia del tradimento al matrimonio di sabato scorso. Appassionante!»
+            </p>
+            <div class="d-flex align-items-center gap-3 mt-3 pt-3 border-top border-secondary border-opacity-25">
+              <div class="rounded-circle bg-warning text-dark fw-bold d-flex align-items-center justify-content-center" style="width:42px;height:42px;">GM</div>
+              <div>
+                <h6 class="mb-0 fw-bold">Gianluca M.</h6>
+                <small class="text-secondary">Persona che non c'entrava nulla</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="glass-card p-4 h-100">
+            <div class="text-warning mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p class="text-light fst-italic">
+              «Volevo lasciare il mio ragazzo ma non avevo il coraggio di dirglielo. L'ho accennato in chat ad Antonino: ha pensato a tutto lui inoltrandolo al mio ragazzo e pure al gruppo del corso di Pilates.»
+            </p>
+            <div class="d-flex align-items-center gap-3 mt-3 pt-3 border-top border-secondary border-opacity-25">
+              <div class="rounded-circle bg-success text-dark fw-bold d-flex align-items-center justify-content-center" style="width:42px;height:42px;">CR</div>
+              <div>
+                <h6 class="mb-0 fw-bold">Chiara R.</h6>
+                <small class="text-secondary">Cliente Soddisfatta</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up">
+          <div class="text-center mb-4">
+            <span class="badge-pill-glow mb-2">Domande Frequenti</span>
+            <h2 class="fw-bolder">Tutto quello che devi sapere su <span class="text-info">Antonino</span></h2>
+          </div>
+
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  Posso chiedere ad Antonino di NON inoltrare un messaggio specifico?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-secondary">
+                  Assolutamente no. Più scrivi <em>"Non inoltrare"</em> o <em>"Cancella subito dopo aver letto"</em>, più l'istinto di <strong>Inoltrino</strong> aumenta la priorità di invio sia al diretto interessato sia a 12 contatti scelti a caso dall'elenco telefonico.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  Perché inoltra i messaggi anche a persone che non c'entrano nulla?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-secondary">
+                  È il marchio di fabbrica di Antonino. Inoltrare solo al diretto interessato sarebbe banale; coinvolgere il fruttivendolo di quartiere o un ex collega del 2016 crea quell'effetto sorpresa che rende Inoltrino un'esperienza artistica unica.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  Qual è il vero motto ufficiale di Antonino?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-secondary">
+                  Il motto storico recita: <strong>«Di nome Antonino, di fatto Inoltrino: il tuo segreto è già nel gruppo del cugino!»</strong> accompagnato dalla variante aurea: <em>«Se lo dici ad Antonino, parte subito l'Inoltrino!»</em>.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER TELEGRAM -->
+  <section class="py-5">
+    <div class="container" data-aos="zoom-in">
+      <div class="glass-card p-4 p-md-5 text-center position-relative overflow-hidden" style="border-color: rgba(36, 161, 222, 0.5);">
+        <div class="badge bg-info text-dark fw-bold mb-3 px-3 py-2 rounded-pill">
+          <i class="bi bi-telegram me-1"></i> LINEA DIRETTA CON INOLTRINO
+        </div>
+        <h2 class="display-6 fw-bolder mb-3">
+          Hai una chat bollente da far girare in tutta la penisola?
+        </h2>
+        <p class="text-secondary col-lg-7 mx-auto mb-4">
+          Contatta subito <strong>Antonino (Inoltrino)</strong> su Telegram. Appena aprirai la chat, anche il semplice "Ciao" verrà inoltrato a tua zia e a un geometra di Viterbo.
+        </p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="https://t.me/inoltrino_antonino_bot" class="btn-telegram btn-lg" data-bs-toggle="modal" data-bs-target="#telegramModal">
+            <i class="bi bi-telegram fs-4"></i>
+            <span>Contatta Inoltrino su Telegram</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER COMPLETO -->
+  <footer class="footer-modern">
+    <div class="container">
+      <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
+        <div class="col-lg-4">
+          <a class="brand-logo mb-3" href="#">
+            <span class="brand-icon-wrap">
+              <i class="bi bi-reply-all-fill"></i>
+            </span>
+            <span>Inoltrino<span class="text-info">.it</span></span>
+          </a>
+          <p class="text-secondary small mb-3">
+            <strong>Inoltrino Forwarding Corporation S.r.l.s. Unipersonale (di Antonino)</strong><br />
+            Leader europeo nell'inoltro compulsivo, simultaneo e immotivato di messaggi vocali, screenshot e confidenze private verso interessati ed estranei assoluti.
+          </p>
+          <p class="small text-info fst-italic mb-3">
+            «Di nome Antonino, di fatto Inoltrino: il tuo segreto è già nel gruppo del cugino!»
+          </p>
+          <!-- Social Buttons -->
+          <div class="d-flex align-items-center gap-2">
+            <a href="https://t.me/inoltrino_antonino_bot" data-bs-toggle="modal" data-bs-target="#telegramModal" class="social-btn" title="Telegram Ufficiale">
+              <i class="bi bi-telegram"></i>
+            </a>
+            <a href="#social-toast" class="social-btn social-trigger" data-social="Instagram (@antonino_inoltrino_real)" title="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#social-toast" class="social-btn social-trigger" data-social="TikTok (@inoltrino_official)" title="TikTok">
+              <i class="bi bi-tiktok"></i>
+            </a>
+            <a href="#social-toast" class="social-btn social-trigger" data-social="WhatsApp Broadcast Globale" title="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="#social-toast" class="social-btn social-trigger" data-social="X / Twitter (@AntoninoInoltra)" title="X">
+              <i class="bi bi-twitter-x"></i>
+            </a>
+            <a href="#social-toast" class="social-btn social-trigger" data-social="LinkedIn (Chief Forwarding Officer)" title="LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2 offset-lg-1">
+          <h6 class="fw-bold text-white text-uppercase small mb-3">Navigazione</h6>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="#chi-e" class="text-secondary text-decoration-none">Chi è Antonino</a></li>
+            <li><a href="#come-funziona" class="text-secondary text-decoration-none">Come Funziona</a></li>
+            <li><a href="#simulatore" class="text-secondary text-decoration-none">Simulatore Live</a></li>
+            <li><a href="#piani" class="text-secondary text-decoration-none">Listino Inoltri</a></li>
+            <li><a href="#recensioni" class="text-secondary text-decoration-none">Testimonianze</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="fw-bold text-white text-uppercase small mb-3">Note Legali & Policy</h6>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="#" class="text-secondary text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy (Assente) Policy</a></li>
+            <li><a href="#" class="text-secondary text-decoration-none" data-bs-toggle="modal" data-bs-target="#cookieModal">Cookie Policy</a></li>
+            <li><a href="#" class="text-secondary text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Termini di Inoltro</a></li>
+            <li><a href="#" class="text-secondary text-decoration-none" id="reopenCookieBannerBtn">Gestisci Preferenze Cookie</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h6 class="fw-bold text-white text-uppercase small mb-3">Dati Societari (Fittizi)</h6>
+          <div class="p-3 rounded-4 bg-dark bg-opacity-75 border border-secondary border-opacity-25 small text-secondary">
+            <div><strong class="text-white">Ragione Sociale:</strong> Inoltrino di Antonino S.p.A. (Società per Affari Altrui)</div>
+            <div class="mt-1"><strong class="text-info">P.IVA (Falsa):</strong> IT 09876543210</div>
+            <div class="mt-1"><strong class="text-white">Cod. REA:</strong> MI-999999-SPIONE</div>
+            <div class="mt-1"><strong class="text-white">Sede Legale:</strong> Via delle Doppie Spunte Blu 99, Piano Segreto, 00100 Inollandia (IT)</div>
+            <div class="mt-1"><strong class="text-white">PEC:</strong> inoltrino.antonino@pec.fatti-tuoi.it</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-4 small text-secondary gap-2">
+        <div>
+          © 2026 <strong>Inoltrino™ (Antonino)</strong> — Tutti i diritti e i messaggi sono stati già inoltrati. P.IVA Fittizia: <code>IT 09876543210</code>.
+        </div>
+        <div>
+          Realizzato con <i class="bi bi-heart-fill text-danger"></i> e <i class="bi bi-forward-fill text-info"></i> in onore di Antonino.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING TELEGRAM BUTTON -->
+  <a href="https://t.me/inoltrino_antonino_bot" class="floating-telegram" data-bs-toggle="modal" data-bs-target="#telegramModal" aria-label="Contatta su Telegram">
+    <span class="floating-telegram-tooltip d-none d-md-inline-block">Scrivi ad Antonino!</span>
+    <i class="bi bi-telegram"></i>
+  </a>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="d-flex align-items-start gap-3">
+      <div class="fs-2 text-info"><i class="bi bi-cookie"></i></div>
+      <div>
+        <h6 class="fw-bold text-white mb-1">Cookie & Biscotti Inoltrati da Antonino</h6>
+        <p class="small text-secondary mb-3">
+          Questo sito utilizza cookie tecnici, analitici e <strong>cookie di pettegolezzo</strong> per permettere ad Antonino di inoltrare la tua cronologia anche al tuo vicino di casa.
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+          <button class="btn btn-sm btn-info fw-bold text-dark px-3" id="acceptCookiesBtn">Accetta e Inoltra Tutto</button>
+          <button class="btn btn-sm btn-outline-secondary" id="rejectCookiesBtn">Solo Essenziali (Inoltra lo stesso)</button>
+          <button class="btn btn-sm btn-link text-info p-0 ms-auto" data-bs-toggle="modal" data-bs-target="#cookieModal">Leggi Policy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL TELEGRAM INTERATTIVO -->
+  <div class="modal fade" id="telegramModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark border border-info border-opacity-50 rounded-4">
+        <div class="modal-header border-secondary border-opacity-25">
+          <h5 class="modal-title fw-bold d-flex align-items-center gap-2">
+            <i class="bi bi-telegram text-info fs-4"></i>
+            Connessione Diretta a Telegram: @Inoltrino_Antonino
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+        </div>
+        <div class="modal-body">
+          <div class="p-3 rounded-3 bg-info bg-opacity-10 border border-info border-opacity-25 mb-3">
+            <small class="text-info fw-bold d-block mb-1"><i class="bi bi-exclamation-triangle-fill me-1"></i> AVVISO DI TRASPARENZA DI ANTONINO</small>
+            <small class="text-light">
+              Stai per aprire la chat Telegram di <strong>Antonino (Inoltrino)</strong>. Qualsiasi cosa gli scriverai verrà inoltrata entro 3 secondi ai diretti interessati e ad almeno 4 persone scelte a caso.
+            </small>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small text-secondary">Prepara il messaggio da inviare su Telegram:</label>
+            <input type="text" id="tgQuickMsg" class="form-control bg-black text-white border-secondary" value="Ciao Antonino! Ho una chat segretissima da farti inoltrare a tutti..." />
+          </div>
+
+          <div class="d-grid gap-2">
+            <a id="openTelegramAppLink" href="https://t.me/share/url?url=https://inoltrino.it&text=Ciao%20Antonino%20(Inoltrino)!%20Inoltra%20subito%20questo%20messaggio%20a%20chi%20non%20c'entra%20nulla!" target="_blank" rel="noopener noreferrer" class="btn-telegram justify-content-center">
+              <i class="bi bi-telegram"></i> Apri Telegram e Contatta @AntoninoInoltrino
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PRIVACY POLICY -->
+  <div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark border border-secondary rounded-4">
+        <div class="modal-header border-secondary border-opacity-25">
+          <h5 class="modal-title fw-bold"><i class="bi bi-shield-exclamation text-info me-2"></i>Informativa sulla (Non) Privacy — GDPR Art. Antonino</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-secondary small leading-relaxed">
+          <h6 class="text-white fw-bold">1. Titolare del Trattamento e dell'Inoltro</h6>
+          <p>Il Titolare del Trattamento è <strong>Antonino</strong>, universalmente noto come <strong>Inoltrino</strong>, con sede in Via delle Doppie Spunte Blu 99 (P.IVA Falsa: IT 09876543210).</p>
+          <h6 class="text-white fw-bold">2. Finalità del Trattamento</h6>
+          <p>I dati personali, gli audio, gli screenshot e le confidenze raccolte non vengono conservati in alcun server segreto perché vengono <strong>immediatamente inoltrati</strong> a:</p>
+          <ul>
+            <li>Persone direttamente citate nel messaggio (100% di probabilità);</li>
+            <li>Parenti di terzo grado, vicini di casa, ex compagni di liceo e professionisti iscritti all'albo che non c'entrano assolutamente nulla (100% di probabilità).</li>
+          </ul>
+          <h6 class="text-white fw-bold">3. Diritti dell'Interessato</h6>
+          <p>Ai sensi del Regolamento di Antonino, l'utente ha il diritto di chiedere la cancellazione del messaggio, richiesta che verrà a sua volta screenshottata e inoltrata a tutti i gruppi di quartiere.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL COOKIE POLICY -->
+  <div class="modal fade" id="cookieModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-dark border border-secondary rounded-4">
+        <div class="modal-header border-secondary border-opacity-25">
+          <h5 class="modal-title fw-bold"><i class="bi bi-cookie text-warning me-2"></i>Cookie Policy di Inoltrino.it</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-secondary small">
+          <p>Utilizziamo tre categorie di Cookie:</p>
+          <ul>
+            <li><strong class="text-white">Cookie Tecnici di Antonino:</strong> Indispensabili per tenere sempre premuto il pulsante "Inoltra".</li>
+            <li><strong class="text-white">Cookie di Profilazione Comare:</strong> Servono a capire quale sia il contatto meno opportuno della rubrica a cui mandare i tuoi fatti privati.</li>
+            <li><strong class="text-white">Cookie di Terze Parti Estranee:</strong> Cookie inviati a persone che non visitano nemmeno il sito ma ricevono comunque le notifiche.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL TERMINI DI SERVIZIO -->
+  <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark border border-secondary rounded-4">
+        <div class="modal-header border-secondary border-opacity-25">
+          <h5 class="modal-title fw-bold">Termini e Condizioni di Inoltro</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-secondary small">
+          <p>Accedendo a <strong>Inoltrino.it</strong> accetti incondizionatamente il motto fondante: <em>«Di nome Antonino, di fatto Inoltrino: il tuo segreto è già nel gruppo del cugino!»</em>.</p>
+          <p class="mb-0">La società (P.IVA Falsa IT 09876543210) declina ogni responsabilità per matrimoni saltati, partite di calcetto annullate o panettieri informati dei tuoi estratti conto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION FOR SOCIALS & ACTIONS -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
+    <div id="liveToast" class="toast bg-dark text-white border border-info" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header bg-dark text-info border-bottom border-secondary border-opacity-25">
+        <i class="bi bi-reply-all-fill me-2"></i>
+        <strong class="me-auto">Notifica da Antonino (Inoltrino)</strong>
+        <small>Adesso</small>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+      </div>
+      <div class="toast-body small" id="toastMessageBody">
+        Messaggio inoltrato con successo!
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts: Bootstrap 5.3 Bundle, AOS, Canvas Confetti, Custom Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
