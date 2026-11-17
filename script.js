@@ -9,8 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Navbar scroll effect
+  // 2. Navbar scroll effect & mobile menu auto-close
   const mainNav = document.getElementById('mainNav');
+  const navContent = document.getElementById('navContent');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
       mainNav.classList.add('scrolled');
@@ -18,6 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
       mainNav.classList.remove('scrolled');
     }
   });
+
+  if (navContent && typeof bootstrap !== 'undefined') {
+    navContent.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navContent.classList.contains('show')) {
+          const bsCollapse = bootstrap.Collapse.getInstance(navContent) || new bootstrap.Collapse(navContent, { toggle: false });
+          bsCollapse.hide();
+        }
+      });
+    });
+  }
 
   // 3. Interactive Background Particles (Network Nodes representing forwarded chats)
   const canvas = document.getElementById('particles-canvas');
@@ -293,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (tgQuickMsg && openTelegramAppLink) {
     tgQuickMsg.addEventListener('input', () => {
       const encoded = encodeURIComponent(tgQuickMsg.value);
-      openTelegramAppLink.href = `https://t.me/share/url?url=https://inoltrino.it&text=${encoded}`;
+      openTelegramAppLink.href = `https://t.me/share/url?url=https://inoltrino.farted.net&text=${encoded}`;
     });
   }
 
